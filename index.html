@@ -6,12 +6,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Вариант 2 Шишенко</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+        }
+
+        header {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            background-color: aliceblue;
+            border-color: lightblue;
+            border-style: solid;
+            padding: 0 15px;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            left: 15px;
+            font-weight: bold;
+        }
+
+        .FormC {
+            background-color: white;
+            width: 300px;
+            height: auto;
+            margin: auto;
+            margin-top: 10%;
+            text-align: center;
+            border-style: solid;
+            box-shadow: 0 0 5px 1px #2a921f;
+        }
+    </style>
 </head>
 
 <body>
     <header>
         <h1>Вариант 2</h1>
     </header>
+    <div class="FormC">
+        <form method="post" action="/download">
+            <label>Имя профиля</label><br>
+            <input type="text" name="ProfileName" required /><br><br>
+            <input id="SendButton" type="submit">
+            <button type="button" id="CloseButton">Закрыть</button>
+        </form>
+    </div>
     <footer>
         <p>Шишенко Валерий Сергеевич, 201-324</p>
     </footer>
