@@ -2,9 +2,9 @@
   "name": "exam",
   "version": "1.0.0",
   "description": "exam app",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -12,8 +12,7 @@
   },
   "author": "Valery",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Eddy-9/Exam4sem/issues"
-  },
-  "homepage": "https://github.com/Eddy-9/Exam4sem#readme"
+  "dependencies": {
+    "express": "^4.18.1"
+  }
 }
