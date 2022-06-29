@@ -11,6 +11,7 @@
             display: flex;
             flex-direction: column;
             margin: 0;
+            min-height: 100vh;
         }
 
         header {
@@ -25,10 +26,9 @@
         }
 
         footer {
-            position: absolute;
-            bottom: 0;
             left: 15px;
             font-weight: bold;
+            flex-shrink: 0;
         }
 
         .FormC {
@@ -36,10 +36,32 @@
             width: 300px;
             height: auto;
             margin: auto;
-            margin-top: 10%;
+            margin-top: 5%;
             text-align: center;
             border-style: solid;
             box-shadow: 0 0 5px 1px #2a921f;
+        }
+
+        .inputC {
+            border-style: solid;
+            box-shadow: 0 0 5px 1px red;
+        }
+
+        .inputC.validityTrue {
+            border-style: solid;
+            box-shadow: 0 0 5px 1px #2a921f;
+        }
+
+        table {
+            margin: auto;
+            width: 300px;
+            height: auto;
+            border-style: solid;
+            border-color: black;
+            box-shadow: 0 0 5px 1px #2a921f;
+        }
+        .tableC {
+            flex-grow: 1;
         }
     </style>
 </head>
@@ -49,16 +71,49 @@
         <h1>Вариант 2</h1>
     </header>
     <div class="FormC">
-        <form method="post" action="/download">
-            <label>Имя профиля</label><br>
-            <input type="text" name="ProfileName" required /><br><br>
+        <form method="post">
+            <label>Введите текст</label><br>
+            <input type="text" name="textName" id="text_id" class="inputC" required /><br><br>
             <input id="SendButton" type="submit">
             <button type="button" id="CloseButton">Закрыть</button>
         </form>
     </div>
+    <div class="tableC">
+        <table id="table">
+            <tr>
+                <th>Список</th>
+            </tr>
+        </table>
+    </div>
     <footer>
         <p>Шишенко Валерий Сергеевич, 201-324</p>
     </footer>
+
+    <script>
+        document.getElementById("text_id").onblur = function (e) {
+            if (document.getElementById("text_id").validity.typeMismatch) {
+                document.getElementById("text_id").setCustomValidity("Incorrect type")
+            }
+            else if (document.getElementById("text_id").validity.valueMissing) {
+                document.getElementById("text_id").setCustomValidity("Fill out this field")
+            }
+            else {
+                document.getElementById("text_id").setCustomValidity('');
+                document.getElementById("text_id").classList.add("validityTrue");
+            }
+            document.getElementById("text_id").reportValidity();
+        }
+
+        document.getElementById("SendButton").onclick = function () {
+            document.getElementById("table").style.display = "block";
+
+            let table = document.getElementById("table");
+            let row = table.insertRow(-1);
+            let text = row.insertCell(0);
+            text.innerHTML = document.getElementById("text_id").value;
+            return false;
+        }
+    </script>
 </body>
 
 </html>
